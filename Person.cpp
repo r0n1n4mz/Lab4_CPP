@@ -35,3 +35,28 @@ std::string Person::getName() const{
 int Person::getAge() const{
     return this->age;
 }
+
+void Person::input(std::istream& in){
+    std::cout << "Enter name: ";
+    in >> name;
+    std::cout << "Enter age: ";
+    in >> age;
+}
+
+void Person::output(std::ostream& out) const{
+    out << "Name: " << name << std::endl;
+    out << "Age: " << age << std::endl;
+}
+
+void Person::saveTofile(const std::string& filename) const{
+    std::ofstream file(filename);
+    if(!file){
+        std::cerr << "Failed to open the file for writing: " << filename << std::endl;
+        return;
+    }
+
+    output(file);
+    if(!file){
+        std::cerr << "Failed to write to the file: " << filename << std::endl;
+    }
+}

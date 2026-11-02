@@ -1,5 +1,8 @@
+#pragma once
 #include"Person.h"
 #include<string>
+#include <iostream>
+#include <fstream>
 
 class Official : public Person{
     private:
@@ -12,7 +15,7 @@ class Official : public Person{
 
     public:
         Official();
-        Official(const std::string startDate, const std::string workPhonenumber, const std::string workOffice, const std::string workPlace, const std::string position, const float salary);
+        Official(const std::string Name, const int age, const std::string startDate, const std::string workPhonenumber, const std::string workOffice, const std::string workPlace, const std::string position, const float salary);
 
         void setStartDate(const std::string startDate);
         void setWorkPhonenumber(const std::string workPhonenumber);
@@ -20,7 +23,7 @@ class Official : public Person{
         void setWorkPlace(const std::string workPlace);
         void setPosition(const std::string position);
         void setSalary(const float salary);
-        void saveTofile(const std::string& filename) const;
+        void saveTofile(const std::string& filename) const override;
 
         std::string getStartDate() const;
         std::string getWorkPhonenumber() const;
@@ -29,7 +32,7 @@ class Official : public Person{
         std::string getPosition() const;
         float getSalary() const;
 
-        friend std::istream& operator>>(std::istream& in, Official& official);
-        friend std::ostream& operator<<(std::ostream& out, const Official& official);
+        void input(std::istream& in) override;
+        void output(std::ostream& out) const override;
 
 };

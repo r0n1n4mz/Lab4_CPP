@@ -1,8 +1,8 @@
 #include "Official.h"
-#include <iostream>
-#include <fstream>
 
 Official::Official() : Person(){
+    this->name = "Unknown";
+    this->age = 0;
     this->starDate = "Unknown";
     this->workPhonenumber = "Unknown";
     this->workOffice = "Unknown";
@@ -11,7 +11,9 @@ Official::Official() : Person(){
     this->salary = 0.0;
 }
 
-Official::Official(const std::string startDate, const std::string workPhonenumber, const std::string workOffice, const std::string workPlace, const std::string position, const float salary) : Person(){
+Official::Official(const std::string Name, const int age, const std::string startDate, const std::string workPhonenumber, const std::string workOffice, const std::string workPlace, const std::string position, const float salary) : Person(Name, age){
+    this->name = Name;
+    this->age = age;
     this->starDate = startDate;
     this->workPhonenumber = workPhonenumber;
     this->workOffice = workOffice;
@@ -69,35 +71,31 @@ float Official::getSalary() const{
 }
 
 void Official::saveTofile(const std::string& filename) const{
-    std::ofstream file(filename);
-    if(file.is_open()){
-        file << *this;
-        file.close();
-    }
+    Person::saveTofile(filename);
 }
 
-std::istream& operator>>(std::istream& in, Official& official){
+void Official::input(std::istream& in){
+    Person::input(in);
     std::cout << "Enter start date: ";
-    in >> official.starDate;
+    in >> this->starDate;
     std::cout << "Enter work phone number: ";
-    in >> official.workPhonenumber;
+    in >> this->workPhonenumber;
     std::cout << "Enter work office: ";
-    in >> official.workOffice;
+    in >> this->workOffice;
     std::cout << "Enter work place: ";
-    in >> official.workPLace;
+    in >> this->workPLace;
     std::cout << "Enter position: ";
-    in >> official.position;
+    in >> this->position;
     std::cout << "Enter salary: ";
-    in >> official.salary;
-    return in;
+    in >> this->salary;
 }
 
-std::ostream& operator<<(std::ostream& out, const Official& official){
-    out << "Start date: " << official.starDate << std::endl;
-    out << "Work phone number: " << official.workPhonenumber << std::endl;
-    out << "Work office: " << official.workOffice << std::endl;
-    out << "Work place: " << official.workPLace << std::endl;
-    out << "Position: " << official.position << std::endl;
-    out << "Salary: " << official.salary << std::endl;
-    return out;
+void Official::output(std::ostream& out) const{
+    Person::output(out);
+    out << "Start date: " << this->starDate << std::endl;
+    out << "Work phone number: " << this->workPhonenumber << std::endl;
+    out << "Work office: " << this->workOffice << std::endl;
+    out << "Work place: " << this->workPLace << std::endl;
+    out << "Position: " << this->position << std::endl;
+    out << "Salary: " << this->salary << std::endl;
 }

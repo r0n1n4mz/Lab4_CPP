@@ -21,9 +21,9 @@ void readFile(const std::string& filename){
 int main() {
     Official person;
     std::cout<< "Enter official details:" << std::endl;
-    std::cin >> person;
+    person.input(std::cin);
     std::cout << "Official details:" << std::endl;
-    std::cout << person;
+    person.output(std::cout);
     person.saveTofile("official.txt");
     std::cout<<"Reading from file 'official.txt':" << std::endl;
     readFile("official.txt");
