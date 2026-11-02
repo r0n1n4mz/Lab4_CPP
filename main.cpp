@@ -23,6 +23,7 @@ int main() {
     std::cout<< "Enter official details:" << std::endl;
     std::cin >> person;
     std::cout << "Official details:" << std::endl;
+    std::cout << person;
     person.saveTofile("official.txt");
     std::cout<<"Reading from file 'official.txt':" << std::endl;
     readFile("official.txt");
