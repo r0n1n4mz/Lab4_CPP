@@ -1,7 +1,7 @@
 #include<string>
 
 class Person{
-    private:
+    protected:
         std::string name;
         int age;
     public:

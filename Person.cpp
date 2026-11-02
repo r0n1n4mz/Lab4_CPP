@@ -7,7 +7,7 @@ Person::Person(){
 
 Person::Person(const std::string name){
     this->name = name;
-    this->age= 0;
+    this->age = -1;
 }
 
 Person::Person(const int age){
