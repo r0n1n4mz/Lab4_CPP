@@ -36,23 +36,27 @@ int Person::getAge() const{
     return this->age;
 }
 
-void Person::writeToFile(const std::string& filename) const {
-    std::ofstream file(filename);
-    file << "Name: " << this->name << std::endl;
-    file << "Age: " << this->age << std::endl;
-    file.close();
-}
-
-std::istream& operator>>(std::istream& in, Person& person){
+void Person::input(std::istream& in){
     std::cout << "Enter name: ";
-    in >> person.name;
+    in >> name;
     std::cout << "Enter age: ";
-    in >> person.age;
-    return in;
+    in >> age;
 }
 
-std::ostream& operator<<(std::ostream& out, const Person& person){
-    out << "Name: " << person.name << std::endl;
-    out << "Age: " << person.age << std::endl;
-    return out;
+void Person::output(std::ostream& out) const{
+    out << "Name: " << name << std::endl;
+    out << "Age: " << age << std::endl;
+}
+
+void Person::saveTofile(const std::string& filename) const{
+    std::ofstream file(filename);
+    if(!file){
+        std::cerr << "Failed to open the file for writing: " << filename << std::endl;
+        return;
+    }
+
+    output(file);
+    if(!file){
+        std::cerr << "Failed to write to the file: " << filename << std::endl;
+    }
 }

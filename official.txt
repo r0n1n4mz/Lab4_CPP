@@ -1,8 +1,0 @@
-Name: Karl
-Age: 38
-Start date: 20.02.2025
-Work phone number: +380932435454
-Work office: 4
-Work place: UNFU
-Position: Director
-Salary: 1000

@@ -7,7 +7,10 @@ class Person{
     protected:
         std::string name;
         int age;
-        void writeToFile(const std::string& filename) const;
+        virtual void saveTofile(const std::string& filename) const;
+        virtual void input(std::istream& in);
+        virtual void output(std::ostream& out) const;
+
     public:
         Person(); 
         Person(const std::string name);
