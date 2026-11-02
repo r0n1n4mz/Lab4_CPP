@@ -1,8 +1,8 @@
 #include "Official.h"
-#include <iostream>
-#include <fstream>
 
 Official::Official() : Person(){
+    this->name = "Unknown";
+    this->age = 0;
     this->starDate = "Unknown";
     this->workPhonenumber = "Unknown";
     this->workOffice = "Unknown";
@@ -11,7 +11,9 @@ Official::Official() : Person(){
     this->salary = 0.0;
 }
 
-Official::Official(const std::string startDate, const std::string workPhonenumber, const std::string workOffice, const std::string workPlace, const std::string position, const float salary) : Person(){
+Official::Official(const std::string Name, const int age, const std::string startDate, const std::string workPhonenumber, const std::string workOffice, const std::string workPlace, const std::string position, const float salary) : Person(Name, age){
+    this->name = Name;
+    this->age = age;
     this->starDate = startDate;
     this->workPhonenumber = workPhonenumber;
     this->workOffice = workOffice;
@@ -77,6 +79,10 @@ void Official::saveTofile(const std::string& filename) const{
 }
 
 std::istream& operator>>(std::istream& in, Official& official){
+    std::cout << "Enter name: ";
+    in >> official.name;
+    std::cout << "Enter age: ";
+    in >> official.age;
     std::cout << "Enter start date: ";
     in >> official.starDate;
     std::cout << "Enter work phone number: ";
@@ -93,6 +99,8 @@ std::istream& operator>>(std::istream& in, Official& official){
 }
 
 std::ostream& operator<<(std::ostream& out, const Official& official){
+    out << "Name: " << official.name << std::endl;
+    out << "Age: " << official.age << std::endl;
     out << "Start date: " << official.starDate << std::endl;
     out << "Work phone number: " << official.workPhonenumber << std::endl;
     out << "Work office: " << official.workOffice << std::endl;

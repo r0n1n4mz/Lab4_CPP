@@ -1,9 +1,13 @@
+#pragma once
 #include<string>
+#include<iostream>
+#include<fstream>
 
 class Person{
     protected:
         std::string name;
         int age;
+        void writeToFile(const std::string& filename) const;
     public:
         Person(); 
         Person(const std::string name);
@@ -16,4 +20,6 @@ class Person{
         std::string getName() const;
         int getAge() const;
 
+        friend std::istream& operator>>(std::istream& in, Person& person);
+        friend std::ostream& operator<<(std::ostream& out, const Person& person);
 };

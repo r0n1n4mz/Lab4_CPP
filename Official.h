@@ -1,5 +1,8 @@
+#pragma once
 #include"Person.h"
 #include<string>
+#include <iostream>
+#include <fstream>
 
 class Official : public Person{
     private:
@@ -12,8 +15,10 @@ class Official : public Person{
 
     public:
         Official();
-        Official(const std::string startDate, const std::string workPhonenumber, const std::string workOffice, const std::string workPlace, const std::string position, const float salary);
+        Official(const std::string Name, const int age, const std::string startDate, const std::string workPhonenumber, const std::string workOffice, const std::string workPlace, const std::string position, const float salary);
 
+        void setName(const std::string name);
+        void setAge(const int age);
         void setStartDate(const std::string startDate);
         void setWorkPhonenumber(const std::string workPhonenumber);
         void setWorkOffice(const std::string workOffice);
@@ -22,6 +27,8 @@ class Official : public Person{
         void setSalary(const float salary);
         void saveTofile(const std::string& filename) const;
 
+        std::string getName() const;
+        int getAge() const;
         std::string getStartDate() const;
         std::string getWorkPhonenumber() const;
         std::string getWorkOffice() const;
