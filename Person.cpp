@@ -1,4 +1,5 @@
 #include "Person.h"
+#include <limits>
 
 Person::Person(){
     this->name = "Unknown";
@@ -40,7 +41,13 @@ void Person::input(std::istream& in){
     std::cout << "Enter name: ";
     in >> name;
     std::cout << "Enter age: ";
-    in >> age;
+    while (!(in >> age)) {
+        if (in.eof()) return;
+
+        in.clear();
+        in.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard bad input
+        std::cout << "Please enter a whole number for age: ";
+    }
 }
 
 void Person::output(std::ostream& out) const{
