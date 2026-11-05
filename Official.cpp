@@ -1,4 +1,5 @@
 #include "Official.h"
+#include <limits>
 
 Official::Official() : Person(){
     this->name = "Unknown";
@@ -87,7 +88,13 @@ void Official::input(std::istream& in){
     std::cout << "Enter position: ";
     in >> this->position;
     std::cout << "Enter salary: ";
-    in >> this->salary;
+    while (!(in >> salary)) {
+        if (in.eof()) return;
+
+        in.clear();
+        in.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "Please enter a whole number for salary: ";
+    }
 }
 
 void Official::output(std::ostream& out) const{
